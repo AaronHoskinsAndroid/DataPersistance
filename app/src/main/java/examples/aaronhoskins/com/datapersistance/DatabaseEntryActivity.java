@@ -2,6 +2,8 @@ package examples.aaronhoskins.com.datapersistance;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,5 +45,22 @@ public class DatabaseEntryActivity extends AppCompatActivity {
                     "%s %s %s %s",
                     music.getTitle(), music.getGenre(), music.getDate(), music.getArtist()));
         }
+    }
+
+    public void getMusicUsingContentProvider() {
+        Uri uri = MusicProviderContract.MusicEntry.CONTENT_URI;
+       Cursor cursor = this.getContentResolver().query(uri,null,null,null,null);
+//
+//        //Delete
+////        this.getContentResolver().delete(uri,
+////                ContentProviderContract.MovieEntry.COLUMN_NAME + "=?",
+////                new String[]{"Gone in 60 seconds"});
+//
+//        ContentValues values = new ContentValues();
+//
+//        values.clear();
+//        values.put(ContentProviderContract.MovieEntry.COLUMN_NAME, "BLA");
+//        //...
+//        getApplicationContext().getContentResolver().insert(uri,values);
     }
 }
